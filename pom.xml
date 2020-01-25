@@ -11,6 +11,8 @@
     <modules>
         <module>yahoo</module>
         <module>Generic</module>
+        <module>BestBuy</module>
+        <module>Ebay</module>
     </modules>
 
 

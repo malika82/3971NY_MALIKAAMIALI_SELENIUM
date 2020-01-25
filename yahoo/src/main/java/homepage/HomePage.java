@@ -1,27 +1,57 @@
 package homepage;
 
+import com.google.common.annotations.VisibleForTesting;
 import common.CommonAPI;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends CommonAPI {
 
-    public void lunchBrowser(String url) {
-        driver.get(url);
-        System.out.println(driver.getTitle());
-    }
+    //WebElements
+    @FindBy(id = "header-search-input")
+    WebElement searchBarTextBox;
 
+    @FindBy(xpath = "//span[text()='Mail']")
+    WebElement mailButton;
+
+    @FindBy(linkText = "Mail")
+    WebElement mailLink;
+
+    @FindBy(xpath = "//button[@id='header-desktop-search-button']")
+    WebElement searchIconButton;
+
+    @FindBy(linkText = "News")
+    WebElement newsLink;
+
+    @FindBy(id = "header-notification-button")
+    WebElement notificationButton;
+
+    // Methods
     public void search(String str) {
-        driver.findElement(By.id("header-search-input")).sendKeys(str);
+        searchBarTextBox.sendKeys(str, Keys.ENTER);
     }
 
     public void mail() {
-        driver.findElement(By.xpath("//span[text()='Mail']")).click();
+        mailButton.click();
     }
-    public void signIn(){
-       driver.findElement(By.id("header-signin-link")).click();
+
+    public void signIn() {
+        driver.findElement(By.id("header-signin-link")).click();
     }
-    public void logIn(){
-        HomePage homePage=new HomePage();
-        driver.findElement(By.id("login-username")).sendKeys("malika@yahoo.com");
+
+    public void clickOnNewsLink() {
+        newsLink.click();
     }
+
+    public void notificationButton() {
+        notificationButton.click();
+    }
+
+    public void mailLink() {
+        mailLink.click();
+    }
+
+
 }

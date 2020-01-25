@@ -10,13 +10,15 @@ import java.util.concurrent.TimeUnit;
 public class CommonAPI {
 
     public static WebDriver driver=null;
+
     @BeforeMethod
     public void setUp() {
         System.setProperty("webdriver.chrome.driver",
                 "/Users/malika/IdeaProjects/MyProject/Generic/src/main/java/driver/chromedriver");
         driver = new ChromeDriver();
+        //driver.get("https://www.yahoo.com/");
         driver.manage().window().fullscreen();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @AfterMethod
